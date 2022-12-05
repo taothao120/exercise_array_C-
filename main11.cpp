@@ -1,42 +1,49 @@
-
 #include <iostream>
-#include<cstring>
-
 using namespace std;
-
-int main()
-{
-  int x,n, a[100];
-  cout <<"Nhap vao so luong phan tu";
-  cin >> n;
-  for ( int i = 0; i< n ; i++ )
-  {
-    cout << "Nhap phan tu A[" << i <<"]= ";
-    cin >> a[i];
-  }
-  //cout <<" Nhap phan tu trong mang can xoa ";
- // cin >> x;
-  int max = a[0];
-  for ( int i = 1; i < n; i++ )
-  {
-    if ( max < a[i] ){
-      max = a[i];
-      
+ 
+const char CHAR_55 = 55;
+const char CHAR_48 = 48;
+ 
+int convertNumber(int n, int b) {
+    if (n < 0 || b < 2 || b > 16 ) {
+        cout<<"He co so hoac gia tri chuyen doi khong hop le!";
+        return 0;
     }
-  }
-  cout << " max" << max << endl;
-
-  for ( int i =0; i<= n; i++ )
-  {
-     if ( max == a[i] )
-     {
-       a[i]= a[i+1];
-       n--;
-     }
-  }
-
-  for ( int i = 0; i < n;i++ )
-    cout << a[i];
-
-  return 0;
+    int i;
+    char arr[20];
+    int count = 0;
+    int m;
+    int remainder = n;
+    while (remainder > 0) {
+        if (b > 10) {
+            m = remainder % b;
+            if (m >= 10) {
+                arr[count] = (char) (m + CHAR_55);
+                count++;
+            } else {
+                arr[count] = (char) (m + CHAR_48);
+                count++;
+            }
+        } else {
+            arr[count] = (char) ((remainder % b) + CHAR_48);
+            count++;
+        }
+        remainder = remainder / b;
+    }
+    // hien thi he co so
+    for (i = count - 1; i >= 0; i--) {
+        cout<< arr[i];
+    }
+    return 1;
+}
+ 
+int main() {
+    int n;
+    cout << " nhap n:";
+    cin >> n;
+    cout <<"So trong he co so 2 = ";
+    convertNumber(n, 2);
+    cout <<"\nSo trong he co so 16 = ";
+ convertNumber(n, 16);
+    return 1;
 }
