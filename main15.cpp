@@ -1,68 +1,47 @@
-#include<iostream>
 
-#include<string.h>
+
+#include <iostream>
+#include <cstring>
+
 using namespace std;
 
-int XoaCH(char s[],char ch[]) {
-
-            int i,j;
-
-            if(ch[0] >='a' && ch[0] <= 'z')
-
-            {
-
-                        for(i=0; i<strlen(s); i++) {
-
-                                    if(s[i] == ch[0] || s[i] == ch[0] - 32) {
-
-                                                for(j=i;j<strlen(s);j++)
-
-                                                            s[j] = s[j+1];
-
-                                    }
-
-                        }
-
-            }
-
-            if(ch[0] >='A' && ch[0] <= 'Z')
-
-            {
-
-                        for(i=0; i<strlen(s); i++) {
-
-                                    if(s[i] == ch[0] || s[i] == ch[0] + 32) {
-
-                                                for(j=i;j<strlen(s);j++)
-
-                                                            s[j] = s[j+1];
-
-                                    }
-
-                        }
-
-            }
-
-            puts(s);
-
+int main()
+{
+  int a[100][100];
+  int n;
+  int max = a[0][0];
+  cout << "Ban muon nhap ma tran cap may?" ;
+  cin >> n;
+  cout << " Hay nhap vao so hang cua ma tran";
+  for ( int i = 0; i <n; i++ )
+  {
+    for ( int j = 0; j < n; j++ )
+    {
+       cout << "A["<< i<<"][" <<j <<"]= ";
+       cin >> a[i][j];
+    }
+  }
+  int c;
+  cout <<"Nhap cot can xoa: ";
+  cin >> c;
+  for ( int i = 0; i <n; i++ )
+  {
+    for ( int j = c; j < n-1; j++ )
+      a[i][j] = a[i][j+1];
+      
+     
+  }
+  n--;
+  //cout << " MAx cua ma tran= "<< max<< endl;
+    for ( int i = 0; i <n+1; i++ )
+  {
+    for ( int j = 0; j < n; j++ )
+    {
+      // cout << "A["<< i<<"][" <<j <<"]= ";
+       cout<< a[i][j];
+    }
+  }
+  
+  return 0;
 }
 
-int main() {
-
-            char s[100],ch[2];
-
-            cout <<"Nhap chuoi ban dau: ";
-
-            gets(s);
-
-            fflush(stdin);
-
-            cout <<"Nhap ky tu ch: ";
-
-            gets(ch);
-
-            XoaCH(s,ch);
-
-            return 0;
-
-}

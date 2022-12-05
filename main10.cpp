@@ -1,22 +1,30 @@
 #include <iostream>
-#include <string.h>
+#include<cstring>
 
 using namespace std;
-void chuhoa(char *s){s[0]=toupper(s[0]);for(int i=1;i<strlen(s);i++)//chua tim dc cach nao toiuu hon
-  if(s[i]==' '){s[i+1]=toupper(s[i+1]);i++;}
-  else{if(s[i]>='A' && s[i]<='Z') s[i]=s[i]+32;}
-  puts(s);
-}
 
-int main(){
-    char S[300];
+int main()
+{
+  int x,n, a[100];
+  cout <<"Nhap vao so luong phan tu";
+  cin >> n;
+  for ( int i = 0; i< n ; i++ )
+  {
+    cout << "Nhap phan tu A[" << i <<"]= ";
+    cin >> a[i];
+  }
+  cout <<" Nhap phan tu trong mang can xoa ";
+  cin >> x;
+  for ( int i = 0; i < n; i++ )
+  {
+    if ( x == a[i] ){
+      a[i] = a[i+1];
+      n--;
+    }
+  }
 
-    cout <<"Nhap vao chuoi Input: ";
-    fflush(stdin);
-    fgets(S, 300, stdin);
+  for ( int i = 0; i < n;i++ )
+    cout << a[i];
 
-    printf("Output: ");
-    chuhoa(S);
-    cout << S;
-    return 0;
+  return 0;
 }
