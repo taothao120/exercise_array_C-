@@ -1,30 +1,32 @@
-#include <iostream>
-#include <cstring>
-
+#include<iostream>
+#include<string.h>
 using namespace std;
 
-int main()
+char str[10000];
+int main() {
+int count;;
+cin.getline(str, 10000);
+for (int i = 0; i <= 9; ++i)
 {
-  int a[100][100];
-  int n;
-  int max = a[0][0];
-  cout << "Ban muon nhap ma tran cap may?" ;
-  cin >> n;
-  cout << " Hay nhap vao so hang cua ma tran";
-  for ( int i = 0; i <n; i++ )
-  {
-    for ( int j = 0; j < n; j++ )
-    {
-       cout << "A["<< i<<"][" <<j <<"]= ";
-       cin >> a[i][j];
-    }
-  }
-  for ( int i = 1; i <n; i++ )
-  {
-      if ( max < a[i][i] ) max = a[i][i]; 
-  }
-  cout << " MAx cua duong cheo= "<< max<< endl;
-
-  
-  return 0;
+count = 0;
+for (int j = 0; j < strlen(str); ++j)
+{
+if (str[j] == ('0' + i))
+count++;
+}
+if (count)
+cout << (char)('0' + i) << " " << count << '\n';
+}
+for (int i = 0; i <= 25; ++i)
+{
+count = 0;
+for (int j = 0; j < strlen(str); ++j)
+{
+if (str[j] == ('a' + i) || str[j] == ('A' + i))
+count++;
+}
+if (count)
+cout << (char)('a' + i) << " " << count << '\n';
+}
+return 0;
 }
